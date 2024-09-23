@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bams8loege640"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_fgdgb"]
+[ext_resource type="Script" path="res://sprite_2d.gd" id="2_k6h8a"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(569, 294)
+texture = ExtResource("1_fgdgb")
+script = ExtResource("2_k6h8a")
+speed = 60.0
+rot_speed = 100.0
