@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh1ee5q8gafs6"]
+
+[ext_resource type="Texture2D" uid="uid://chvm0jedlu5r0" path="res://assets/PNG/Sprites/Ships/spaceShips_003.png" id="1_7mijs"]
+[ext_resource type="Script" path="res://player.gd" id="1_yew1b"]
+[ext_resource type="PackedScene" uid="uid://chvvgejgsxx14" path="res://bullet.tscn" id="2_bp7km"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uacmk"]
+distance = 18.0
+
+[node name="root" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("bullet_spawn_point")]
+position = Vector2(531, 308)
+script = ExtResource("1_yew1b")
+bullet_scene = ExtResource("2_bp7km")
+bullet_spawn_point = NodePath("bullet_spawn_point")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture = ExtResource("1_7mijs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
+position = Vector2(2.03868, 0.604587)
+scale = Vector2(5.51619, 4.96684)
+polygon = PackedVector2Array(-10.3516, -8.89831, -5.85938, 5.50847, -3.90625, 5.50847, -2.73438, 9.95763, 2.53906, 9.74576, 3.71094, 5.50847, 6.25, 5.9322, 10.1563, -9.32204, 5.85938, -9.32204, 2.73438, -6.77966, -0.390625, -10.8051, -3.125, -7.20339, -6.64063, -9.32204)
+
+[node name="bullet_spawn_point" type="Marker2D" parent="player"]
+position = Vector2(1, 175)
+rotation = 6.28496e-05
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(524, 663)
+scale = Vector2(6.10347, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 3)
+shape = SubResource("WorldBoundaryShape2D_uacmk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.94914, -683)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_uacmk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-104.203, -353)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_uacmk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(121.734, -351)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_uacmk")
