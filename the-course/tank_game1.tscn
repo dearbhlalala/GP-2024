@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dum0vq7fy15st"]
+
+[ext_resource type="Script" path="res://root1.gd" id="1_027t5"]
+[ext_resource type="FontFile" uid="uid://0jk2p2kfmllu" path="res://fonts/Hyperspace Bold.otf" id="2_601f3"]
+[ext_resource type="Script" path="res://player2.gd" id="3_hurv8"]
+[ext_resource type="PackedScene" uid="uid://chvvgejgsxx14" path="res://bullet.tscn" id="4_w5fy6"]
+[ext_resource type="AudioStream" uid="uid://bq4kjn4r61ps2" path="res://sounds/jet.wav" id="5_ee1yw"]
+[ext_resource type="Script" path="res://jet_sound.gd" id="6_6rfpp"]
+[ext_resource type="Script" path="res://spawner.gd" id="7_jndn7"]
+[ext_resource type="Texture2D" uid="uid://ctx4tj52u0886" path="res://assets/PNG/Sprites/Ships/spaceShips_008.png" id="7_yy0of"]
+[ext_resource type="PackedScene" uid="uid://bwi6lmhwtpkeh" path="res://block.tscn" id="8_jabo1"]
+[ext_resource type="Theme" uid="uid://dyroetfulq0o6" path="res://bryans_theme.tres" id="9_uakw0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m7bvt"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_027t5")
+custom_font = ExtResource("2_601f3")
+
+[node name="player" type="RigidBody2D" parent="." node_paths=PackedStringArray("bullet_spawn")]
+position = Vector2(554, 614)
+mass = 5.0
+linear_damp_mode = 1
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("3_hurv8")
+power = 10000.0
+rot_power = 10000.0
+bullet_scene = ExtResource("4_w5fy6")
+bullet_spawn = NodePath("shoot_point")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("5_ee1yw")
+script = ExtResource("6_6rfpp")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+modulate = Color(0.903382, 0.863721, 0.855698, 1)
+material = SubResource("CanvasItemMaterial_m7bvt")
+rotation = 3.14159
+scale = Vector2(0.595, 0.595)
+texture = ExtResource("7_yy0of")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
+scale = Vector2(1.19249, 0.962061)
+polygon = PackedVector2Array(-25.1576, -23.907, -17.6103, -25.9858, -15.9331, -19.7493, -11.7402, -19.7493, -14.256, -9.35492, -6.70868, -8.31549, -4.19293, -18.7098, -0.838593, -19.7493, 1.67715, -19.7493, 5.03149, -18.7098, 6.70868, -8.31549, 13.4174, -8.31549, 12.5788, -20.7887, 15.9331, -19.7493, 16.7717, -25.9858, 24.319, -25.9858, 20.126, 15.5916, 10.9016, 24.9465, 4.19293, 24.9465, 0, 19.7493, -3.35434, 23.907, -10.9016, 24.9465, -20.126, 14.5521)
+
+[node name="shoot_point" type="Node2D" parent="player"]
+position = Vector2(0, -18)
+
+[node name="Timer" type="Timer" parent="player"]
+wait_time = 0.2
+one_shot = true
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource("7_jndn7")
+thing = ExtResource("8_jabo1")
+
+[node name="ui" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="ui"]
+light_mask = 0
+offset_left = 69.0
+offset_top = 522.0
+offset_right = 1069.0
+offset_bottom = 572.0
+theme = ExtResource("9_uakw0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/Panel"]
+light_mask = 0
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 50.0
+scale = Vector2(16.96, 1.52)
+text = "BOOM"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-0.380191, 7.69055)
+scale = Vector2(0.999302, 1.02365)
+polygon = PackedVector2Array(-77.3787, -58.1848, -66, 732, 1203, 733, 1231, -70, 1150, -81, 1158, -2, 1156, 646, 1, 646, -1, -1, 1156, 0, 1149, -79, 1, -59)
+
+[connection signal="timeout" from="player/Timer" to="player" method="_on_timer_timeout"]

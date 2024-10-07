@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://chvvgejgsxx14"]
+[gd_scene load_steps=5 format=3 uid="uid://chvvgejgsxx14"]
 
+[ext_resource type="Script" path="res://bullet.gd" id="1_d6nk0"]
 [ext_resource type="Texture2D" uid="uid://dxbi2blxt7tal" path="res://assets/PNG/Sprites/Missiles/spaceMissiles_018.png" id="1_n82v0"]
+[ext_resource type="PackedScene" uid="uid://nb8daasaeu3i" path="res://explosion.tscn" id="2_o8te0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1kn02"]
 
 [node name="bullet" type="CharacterBody2D"]
 position = Vector2(342, 130)
+script = ExtResource("1_d6nk0")
+explosion = ExtResource("2_o8te0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.14159
 texture = ExtResource("1_n82v0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
