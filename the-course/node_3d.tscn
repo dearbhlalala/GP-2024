@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b80mkef5gqdp4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kj2n7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_kj2n7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999997, -0.00226583, -0.000391502, 0.00222872, 0.913213, 0.407476, -0.000565746, -0.407476, 0.913216, 0.239992, 1.16526, 2.5137)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.760327, 0.478854, -0.438865, 0, 0.675655, 0.737218, 0.649541, -0.560527, 0.513718, -2.9771, 3.87177, 0.798763)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]

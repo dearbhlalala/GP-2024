@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://652vkknks7jc"]
+[gd_scene load_steps=5 format=3 uid="uid://652vkknks7jc"]
 
-[ext_resource type="PackedScene" uid="uid://cacpd8qvulvcp" path="res://player.tscn" id="1_unoke"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d0y8p"]
+[ext_resource type="PackedScene" uid="uid://1pft6td35epr" path="res://player.tscn" id="1_unoke"]
+[ext_resource type="PackedScene" uid="uid://chvvgejgsxx14" path="res://bullet.tscn" id="2_k8vl7"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_mlc1o"]
+[ext_resource type="Script" path="res://enemy.gd" id="4_3ft4p"]
 
 [node name="root" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_unoke")]
+[node name="player" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("1_unoke")]
+position = Vector2(552, 286)
+bullet_scene = ExtResource("2_k8vl7")
+bullet_spawn_point = NodePath(".")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(518, 523)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_d0y8p")
+[node name="enemy" type="Sprite2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(187, 305)
+texture = ExtResource("3_mlc1o")
+script = ExtResource("4_3ft4p")
+player = NodePath("../player")

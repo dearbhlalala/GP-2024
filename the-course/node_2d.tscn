@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://mm6in7n50f0m"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_mgw6i"]
+[ext_resource type="Script" path="res://godotsyntax.gd" id="2_g58ip"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_nvgg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuwm7"]
+size = Vector2(31.6, 31.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqq7g"]
+size = Vector2(31.8, 32.2)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mgw6i")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+position = Vector2(778, 323)
+scale = Vector2(5, 5)
+texture = ExtResource("3_nvgg4")
+script = ExtResource("2_g58ip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2/Sprite2D"]
+position = Vector2(-0.199966, -0.199997)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yuwm7")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(521, 226)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("3_nvgg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 2.5)
+scale = Vector2(5, 5.13902)
+shape = SubResource("RectangleShape2D_vqq7g")
