@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxy0inckyfcqi"]
+
+[ext_resource type="Script" uid="uid://covtjdtbxbk66" path="res://gen_art.gd" id="1_uhwsu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="gen_art" type="Node2D" parent="."]
+position = Vector2(534, 303)
+script = ExtResource("1_uhwsu")
+
+[node name="Label" type="Label" parent="gen_art"]
+offset_left = -507.0
+offset_top = -282.0
+offset_right = -381.0
+offset_bottom = -246.0
+text = "num lines"
+uppercase = true
+
+[node name="num_lines" type="HSlider" parent="gen_art"]
+offset_left = -387.0
+offset_top = -279.0
+offset_right = -215.0
+offset_bottom = -263.0
+step = 0.05
+
+[node name="Label2" type="Label" parent="gen_art"]
+offset_left = -508.0
+offset_top = -244.0
+offset_right = -412.0
+offset_bottom = -195.0
+text = "radius
+"
+uppercase = true
+
+[node name="HSlider" type="HSlider" parent="gen_art"]
+offset_left = -386.0
+offset_top = -239.0
+offset_right = -216.0
+offset_bottom = -223.0
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="gen_art/num_lines" to="gen_art" method="_on_num_lines_value_changed"]
+[connection signal="value_changed" from="gen_art/HSlider" to="gen_art" method="_on_h_slider_value_changed"]
