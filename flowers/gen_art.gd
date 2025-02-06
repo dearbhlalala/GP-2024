@@ -17,7 +17,7 @@ func _draw() -> void:
 		var theta = theta_inc * i
 		var x = sin(theta) * r
 		var y = cos(theta) * r
-		var c:Color = Color.from_hsv(.5, 1, 1, a)
+		var c:Color = Color.from_hsv(.5, 6, 7, a)
 		draw_line(Vector2(px, py), Vector2(x, y), c, 10)
 		#draw_circle(Vector2(x, y), 10, Color.AQUA, false)
 		px = x
