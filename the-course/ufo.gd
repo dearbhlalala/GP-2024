@@ -20,7 +20,7 @@ var can_fire = false
 func _ready() -> void:
 	# Tween my scale using elastic	
 	scale = Vector2.ZERO
-	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(self, "scale", Vector2.ONE, 1)
 	# vary the pitch
 	$Synth.pitch_scale = randf_range(0.7, 1.3)
